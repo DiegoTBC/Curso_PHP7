@@ -1,5 +1,7 @@
 <?php
 
+namespace OO\Pessoa1;
+
 class Pessoa {
 
     public $nome;

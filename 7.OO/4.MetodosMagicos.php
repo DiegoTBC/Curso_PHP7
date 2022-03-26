@@ -1,6 +1,6 @@
 <?php
 
-class Endereco{
+class Endereco2{
 
     private $logradouro;
     private $numero;
@@ -24,7 +24,7 @@ class Endereco{
     }
 }
 
-$meuEndereco = new Endereco("Rua Valdemar Saraiva", "123", "Pirapozinho");
+$meuEndereco = new Endereco2("Rua Valdemar Saraiva", "123", "Pirapozinho");
 
 echo $meuEndereco."<br>";
 
