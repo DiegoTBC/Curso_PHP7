@@ -1,8 +1,8 @@
 <?php
 
 function incluirClasses($nomeClasse){
-    if (file_exists("$nomeClasse.php"))
-        require_once "$nomeClasse.php";
+    if (file_exists("Classes".DIRECTORY_SEPARATOR."$nomeClasse.php"))
+        require_once "Classes".DIRECTORY_SEPARATOR."$nomeClasse.php";
 
 }
 
