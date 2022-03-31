@@ -4,6 +4,8 @@ $filename = "logo.png";
 
 $base64 = base64_encode(file_get_contents($filename));
 
+//$base64 = "";
+
 //Deixar o mimetype dinamico (image/png)
 $fileinfo = new finfo(FILEINFO_MIME_TYPE);
 $mimetype = $fileinfo->file($filename);
