@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/14.BoletoPHP/boleto_banespa.php" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/14.BoletoPHP/boleto_bradesco.php" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/14.BoletoPHP/include/layout_bb.php" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/14.BoletoPHP/include/layout_bradesco.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Exercicios/ManipularArquivos/arquivo.csv" charset="windows-1252" />
   </component>
 </project>
