@@ -1,0 +1,14 @@
+{
+    "name": "diego/cursophp",
+    "description": "Projeto teste.",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Diego Torres",
+            "email": "torressdiiego@outlook.com"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "1.0.*"
+    }
+}
