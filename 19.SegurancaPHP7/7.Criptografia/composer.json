@@ -1,0 +1,15 @@
+{
+  "name": "vendor_name/criptografia",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "torre",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "ext-mcrypt": "*"
+  }
+}
