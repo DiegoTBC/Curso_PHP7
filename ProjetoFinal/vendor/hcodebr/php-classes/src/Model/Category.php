@@ -23,6 +23,8 @@ class Category extends Model
         ]);
 
         $this->setData($result[0]);
+
+        self::updateFile();
     }
 
     public function get($idCategory)
@@ -33,6 +35,7 @@ class Category extends Model
         ]);
 
         $this->setData($result[0]);
+
     }
 
     public function delete()
@@ -42,6 +45,25 @@ class Category extends Model
         $sql->query("DELETE FROM tb_categories WHERE idcategory = :idcategory", [
             ":idcategory" => $this->getidcategory()
         ]);
+
+        self::updateFile();
+
+    }
+
+    //Atualiza o arquivo categories-menu toda vez que houver alguma alteração no banco
+    //evitando que seja feito uma busca ao BD toda vez que o usuario acessar o site
+    public static function updateFile()
+    {
+        $categories = Category::listAll();
+
+        $html = [];
+
+        foreach ($categories as $row)
+        {
+            array_push($html, '<li><a href="/categories/'.$row['idcategory'].'">'.$row['descategory'].'</a></li>');
+        }
+
+        file_put_contents($_SERVER["DOCUMENT_ROOT"].DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'categories-menu.html', implode('', $html));
     }
 
 }
