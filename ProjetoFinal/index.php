@@ -2,6 +2,7 @@
 
 session_start();
 
+use Hcode\Model\Category;
 use Hcode\PageAdmin;
 use Slim\Slim;
 use Hcode\Page;
@@ -206,12 +207,82 @@ $app->post("/admin/forgot/reset", function (){
 
 });
 
-//$app->get('/hash', function(){
-//   echo password_hash("admin", null);
-//   echo '<br>';
-//   echo password_verify("admin", '$2y$10$LDAZ4a.2kX1MUUfCrYLJqOkqPauqlPVXnmoqKGm8tbqDKqN4OLLSi');
-//
-//});
+$app->get('/admin/categories', function (){
+
+    User::verifyLogin();
+
+    $categories = Category::listAll();
+
+    $page = new PageAdmin();
+    $page->setTpl('categories', [
+        "categories" => $categories
+    ]);
+});
+
+$app->get('/admin/categories/create', function (){
+
+    User::verifyLogin();
+
+    $page = new PageAdmin();
+    $page->setTpl('categories-create');
+});
+
+$app->post('/admin/categories/create', function (){
+
+    User::verifyLogin();
+
+    $category = new Category();
+    $category->setData($_POST);
+    $category->save();
+
+    header("Location: /admin/categories");
+    exit;
+});
+
+$app->get("/admin/categories/:idcategory/delete", function ($idcategory){
+
+    User::verifyLogin();
+
+    $category = new Category();
+
+    $category->get((int)$idcategory);
+
+    $category->delete();
+
+    header("Location: /admin/categories");
+    exit;
+});
+
+$app->get("/admin/categories/:idcategory", function ($idcategory){
+
+    User::verifyLogin();
+
+    $category = new Category();
+
+    $category->get((int)$idcategory);
+
+    $page = new PageAdmin();
+    $page->setTpl('categories-update', [
+        "category" => $category->getValues()
+    ]);
+});
+
+$app->post("/admin/categories/:idcategory", function ($idcategory){
+
+    User::verifyLogin();
+
+    $category = new Category();
+    $category->get((int)$idcategory);
+
+    $category->setData($_POST);
+
+    $category->save();
+
+    header("Location: /admin/categories");
+    exit();
+
+});
+
 
 $app->run();
 
