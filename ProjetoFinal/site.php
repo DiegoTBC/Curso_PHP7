@@ -1,10 +1,10 @@
 <?php
 
+use Hcode\Model\Category;
 use Hcode\Model\Product;
 use Hcode\Page;
 
 $app->get('/', function() {
-
 
     $products = Product::listAll();
 
@@ -15,3 +15,14 @@ $app->get('/', function() {
 
 });
 
+$app->get('/categories/:idcategory', function ($idCategory){
+
+    $category = new Category();
+    $category->get((int)$idCategory);
+
+    $page = new Page();
+    $page->setTpl("category", [
+        "category" => $category->getValues(),
+        "products" => Product::checkList($category->getProducts())
+    ]);
+});
