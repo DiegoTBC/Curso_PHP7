@@ -16,10 +16,6 @@ require_once("admin.users.php");
 require_once("admin.products.php");
 require_once("functions.php");
 
-$app->get("/info", function (){
-    phpinfo();
-});
-
 $app->run();
 
  ?>
